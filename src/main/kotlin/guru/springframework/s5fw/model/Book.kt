@@ -9,7 +9,9 @@ data class Book(
         var id: Long = 0,
         var title: String,
         var isbn: String,
-        var publisher: String,
+
+        @OneToOne(cascade = [CascadeType.ALL])
+        var publisher: Publisher,
 
         @ManyToMany
         @JoinTable(name="author_book", joinColumns = [JoinColumn(name="book_id")], inverseJoinColumns = [JoinColumn(name="author_id")])
